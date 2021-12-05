@@ -1,21 +1,28 @@
 # UtilityClasses
 
+Rails gem that facilitates the use of utility CSS frameworks.
+
+This project was inspired by the [classy-yaml](https://github.com/Tonksthebear/classy-yaml) project.
 
 ## Usage
 
-You can easily retrieve a class list for a defined type.
+You can easily define a base class list for a given type:
 
+`config/utility_classes.yml`
 ```yaml
 heading:
   base: 'text-lg font-semibold text-center'
 ```
 
+And then retrieve the class list in your code:
+
 ```ruby
 UtilityClasses.for(:heading)
 ```
 
-You can define variants for the type and access them as such:
+You can optionally define variants for each type:
 
+`config/utility_classes.yml`
 ```yaml
 heading:
   base: 'text-lg font-semibold text-center'
@@ -23,11 +30,15 @@ heading:
     grande: 'text-4xl'
 ```
 
+And then retrieve the class list by passing the variant key:
+
 ```ruby
 UtilityClasses.for(:heading, variant: :grande)
 ```
 
 The returned string will contain the base classes with the variant classes appended.
+
+The `config/utility_classes.yml` file will be loaded into memory the first time it is called and only be reloaded if changes are made to the file.
 
 ## Installation
 
@@ -58,7 +69,9 @@ $ bin/rails generate utility_classes:install
 Add your classes to the generated config file following the structure of the examples.
 
 ## Contributing
-Contribution directions go here.
+
+Contributions are welcome. Feel free to open a PR.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

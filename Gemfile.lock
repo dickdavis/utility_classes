@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    utility_classes (0.1.0)
-      rails (~> 6.1.0)
+    utility_classes (0.1.1)
+      rails (>= 6)
 
 GEM
   remote: https://rubygems.org/

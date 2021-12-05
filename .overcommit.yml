@@ -12,7 +12,6 @@ PreCommit:
 PrePush:
   Minitest:
     enabled: true
-    command: ['bin/test']
 
 PostCheckout:
   ALL:

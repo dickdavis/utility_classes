@@ -8,8 +8,9 @@ This project was inspired by the [classy-yaml](https://github.com/Tonksthebear/c
 
 You can easily define a base class list for a given type:
 
-`config/utility_classes.yml`
 ```yaml
+# config/utility_classes.yml
+
 heading:
   base: 'text-lg font-semibold text-center'
 ```
@@ -18,22 +19,27 @@ And then retrieve the class list in your code:
 
 ```ruby
 UtilityClasses.for(:heading)
+# "text-lg font-semibold text-center"
 ```
 
 You can optionally define variants for each type:
 
-`config/utility_classes.yml`
 ```yaml
+# config/utility_classes.yml
+
 heading:
-  base: 'text-lg font-semibold text-center'
+  base: 'font-semibold text-center'
   variants:
-    grande: 'text-4xl'
+    normal: 'text-lg'
+    large: 'text-2xl'
+    xlarge: 'text-4xl'
 ```
 
 And then retrieve the class list by passing the variant key:
 
 ```ruby
-UtilityClasses.for(:heading, variant: :grande)
+UtilityClasses.for(:heading, variant: :large)
+# "font-semibold text-center text-2xl"
 ```
 
 The returned string will contain the base classes with the variant classes appended.
@@ -67,6 +73,35 @@ $ bin/rails generate utility_classes:install
 ```
 
 Add your classes to the generated config file following the structure of the examples.
+
+If you are using TailwindCSS, ensure that your configuration lists the  `utility_classes.yml` file.
+
+`webpacker` approach:
+
+```javascript
+// tailwind.config.js
+
+module.exports = {
+  purge: [
+    './app/**/**.html.erb',
+    './config/utility_classes.yml' // add this line
+  ],
+  theme: {},
+  variants: {},
+  plugins: [],
+}
+```
+
+`tailwindcss-rails` approach:
+
+```ruby
+# add to your `config/environments/production.rb` file
+
+config.assets.css_compressor = :purger
+config.assets.css_compressor = Tailwindcss::Compressor.new(
+  files_with_class_names: Rails.root.glob('app/views/**/*.*') + Rails.root.glob('config/utility_classes.yml')
+)
+```
 
 ## Contributing
 

@@ -4,6 +4,9 @@ require 'rails'
 require 'active_support/dependencies'
 require 'utility_classes/version'
 require 'utility_classes/railtie'
+require 'utility_classes/utility_class_reader'
+require 'utility_classes/exceptions/type_key_not_found'
+require 'utility_classes/exceptions/variant_key_not_found'
 
 ##
 # Namespace for UtilityClasses gem

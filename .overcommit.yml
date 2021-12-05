@@ -12,7 +12,7 @@ PreCommit:
 PrePush:
   Minitest:
     enabled: true
-    command: ['bundle', 'exec', 'rake', 'test']
+    command: ['bin/test']
 
 PostCheckout:
   ALL:

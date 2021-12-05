@@ -1,0 +1,22 @@
+
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail # Treat all warnings as failures
+    command: ['bundle', 'exec', 'rubocop']
+
+  Reek:
+    enabled: true
+    command: ['bundle', 'exec', 'reek']
+
+PrePush:
+  Minitest:
+    enabled: true
+    command: ['bundle', 'exec', 'rake', 'test']
+
+PostCheckout:
+  ALL:
+    quiet: true
+
+  IndexTags:
+    enabled: true

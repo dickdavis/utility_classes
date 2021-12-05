@@ -12,7 +12,6 @@ module UtilityClasses
   autoload :TypeKeyNotFound, 'utility_classes/exceptions/type_key_not_found'
   autoload :VariantKeyNotFound, 'utility_classes/exceptions/variant_key_not_found'
 
-  mattr_accessor :reader
   def self.reader
     @reader ||= UtilityClassReader.new
   end

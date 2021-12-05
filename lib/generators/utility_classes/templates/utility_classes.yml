@@ -1,0 +1,20 @@
+# The structure of the config file for utility_classes should follow the following pattern:
+#
+# ELEMENT:
+#   base: BASE STYLES HERE
+#   variants:
+#     NAMED VARIANTS HERE
+#
+# For example:
+#
+# btn:
+#   base: 'appearance-none cursor-pointer inline-block text-lg font-semibold text-center align-middle no-underline select-none transition-colors border-2 border-solid rounded-md px-4 py-3 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+#   variants:
+#     solid_blue: 'bg-blue-500 text-white border-blue-500 hover:bg-blue-700'
+#     outline_blue: 'bg-transparent text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white'
+#
+# You do not need to add variants if the element does not require it. For example, this is valid:
+#
+# btn:
+#   base: 'appearance-none cursor-pointer inline-block text-lg font-semibold text-center align-middle no-underline select-none transition-colors border-2 border-solid rounded-md px-4 py-3 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+#

@@ -15,15 +15,10 @@ module UtilityClasses
     end
 
     def for(type, variant: nil)
-      reload_config! if config_changed?
+      reload_config if config_changed?
 
-      classes = styles.dig(type, :base)
-      raise UtilityClasses::Exceptions::TypeKeyNotFound.new(type_key: type) unless classes
-
-      if variant
-        variant_classes = styles.dig(type, :variants, variant)
-        raise UtilityClasses::Exceptions::VariantKeyNotFound.new(variant_key: variant) unless variant_classes
-      end
+      classes = retrieve_classes_for_type(type)
+      variant_classes = retrieve_classes_for_variant(type, variant) if variant
 
       variant_classes ? "#{classes} #{variant_classes}" : classes
     end
@@ -40,7 +35,7 @@ module UtilityClasses
       Rails.root.join('config/utility_classes.yml')
     end
 
-    def reload_config!
+    def reload_config
       @styles = data_from_config
       @last_updated = File.ctime(config_file)
     end
@@ -49,6 +44,20 @@ module UtilityClasses
       return false unless Rails.env.development?
 
       last_updated != File.ctime(config_file)
+    end
+
+    def retrieve_classes_for_type(type)
+      classes = styles.dig(type, :base)
+      raise UtilityClasses::Exceptions::TypeKeyNotFound.new(type_key: type) unless classes
+
+      classes
+    end
+
+    def retrieve_classes_for_variant(type, variant)
+      classes = styles.dig(type, :variants, variant)
+      raise UtilityClasses::Exceptions::VariantKeyNotFound.new(variant_key: variant) unless classes
+
+      classes
     end
   end
 end

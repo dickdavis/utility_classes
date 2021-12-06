@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
     'rubygems_mfa_required' => 'true',
     'homepage_uri' => spec.homepage,
     'source_code_uri' => 'https://github.com/d3d1rty/utility_classes',
-    'changelog_uri' => 'https://github.com/d3d1rty/utility_classes'
+    'changelog_uri' => 'https://github.com/d3d1rty/utility_classes/blob/main/CHANGELOG.md'
   }
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'LICENSE', 'Rakefile', 'README.md']

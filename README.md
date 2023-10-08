@@ -1,5 +1,7 @@
 # UtilityClasses
 
+**You probably should NOT use this gem. The preferred method for accomplishing something similar is to use the `@apply` directive instead (if using TailwindCSS.) This gem will no longer be receiving updates.**
+
 Rails gem that facilitates the use of utility CSS frameworks.
 
 This project was inspired by the [classy-yaml](https://github.com/Tonksthebear/classy-yaml) project.
